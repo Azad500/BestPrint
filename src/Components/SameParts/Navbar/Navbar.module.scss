@@ -21,6 +21,16 @@
     transform: translateX(-100%);
   }
 }
+.header {
+  background-image: url("../../../Images/homePageNavbar.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 33px 0 5px 0;
+  @include responsive992 {
+    padding: 0;
+  }
+}
 header {
   width: 100%;
   background-color: white;
@@ -69,10 +79,22 @@ header {
       }
       .phoneElement {
         cursor: pointer;
+        .whiteColor {
+          color: $white_color;
+        }
+        .blackColor {
+          color: $black_color;
+        }
       }
       .mailElement {
         gap: 5px;
         cursor: pointer;
+        .whiteColor {
+          color: $white_color;
+        }
+        .blackColor {
+          color: $black_color;
+        }
       }
       .sosialAndLangElements {
         display: flex;
@@ -93,12 +115,17 @@ header {
           gap: 8px;
           cursor: pointer;
           p {
-            color: var(--grayscale-900, #212121);
             font-family: "RobotoMedium";
             font-size: 12px;
             font-style: normal;
             line-height: 140%;
             letter-spacing: 0.2px;
+          }
+          .whiteColor {
+            color: $white_color;
+          }
+          .blackColor {
+            color: $black_color;
           }
           .arrowElement {
             height: 10px;
@@ -116,15 +143,41 @@ header {
       display: flex;
       align-items: center;
       gap: 16px;
-      p {
-        color: $black_color;
+      a {
+        position: relative;
         font-family: "Roboto";
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
         line-height: 140%;
         letter-spacing: 0.2px;
+        text-decoration: none;
+        color: $black_color;
         cursor: pointer;
+        &:after {
+          content: "";
+          position: absolute;
+          height: 1px;
+          width: 0; //js kodunda bunu 100% edende secilmis kimi olacaq
+          left: 0;
+          bottom: -10px;
+          transition: 0.3s;
+        }
+        &:hover::after {
+          width: 100%;
+        }
+      }
+      .whiteColor {
+        color: $white_color;
+        &:after {
+          background-color: $white_color;
+        }
+      }
+      .blackColor {
+        color: $black_color;
+        &:after {
+          background-color: $black_color;
+        }
       }
       .userImage {
         height: 24px;
@@ -134,6 +187,13 @@ header {
           height: 24px;
         }
       }
+    }
+  }
+  .navbar {
+    margin: 0 auto;
+    @include responsive992 {
+      margin: 5px auto;
+      gap: 10px;
     }
   }
   nav {
@@ -168,6 +228,35 @@ header {
           width: 16px;
           height: 16px;
           cursor: pointer;
+        }
+        .searchImage {
+          display: block;
+        }
+        .searchImageHidden {
+          display: none;
+        }
+        .searchInput {
+          position: relative;
+          margin-left: 10px;
+          input {
+            width: 120px;
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #424242;
+            padding: 6px 24px 6px 12px;
+            &::placeholder {
+              color: $black_color;
+            }
+          }
+          .searchImageInInput {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            img {
+              width: 16px;
+              cursor: pointer;
+            }
+          }
         }
       }
       li:last-child {
@@ -207,7 +296,6 @@ header {
           &:after {
             content: "";
             position: absolute;
-            background-color: $black_color;
             height: 1px;
             width: 0; //js kodunda bunu 100% edende secilmis kimi olacaq
             left: 0;
@@ -216,6 +304,18 @@ header {
           }
           &:hover::after {
             width: 100%;
+          }
+        }
+        .whiteColor {
+          color: $white_color;
+          &:after {
+            background-color: $white_color;
+          }
+        }
+        .blackColor {
+          color: $black_color;
+          &:after {
+            background-color: $black_color;
           }
         }
       }
@@ -233,9 +333,25 @@ header {
       .searchInput {
         position: relative;
         input {
-          border-radius: 10px;
-          border: 1px solid #424242;
+          border-radius: 5px;
           padding: 6px 24px 6px 12px;
+          background-color: transparent;
+        }
+        .whiteColor {
+          border: 1px solid $white_color;
+          color: $white_color;
+          &::placeholder {
+            color: $white_color;
+          }
+          &:hover {
+            border: 1px solid #424242;
+          }
+          &:hover::placeholder {
+            color: $black_color;
+          }
+        }
+        .blackColor {
+          border: 1px solid #424242;
           &::placeholder {
             color: $black_color;
           }
@@ -248,6 +364,15 @@ header {
             width: 16px;
             cursor: pointer;
           }
+          .blackSearch {
+            display: none;
+          }
+        }
+        &:hover .whiteSearch {
+          display: none;
+        }
+        &:hover .blackSearch {
+          display: block;
         }
       }
       .orderButton {
@@ -319,6 +444,144 @@ header {
         &:last-child {
           font-weight: 700;
           font-family: "RobotoBold";
+        }
+      }
+    }
+  }
+  .otherContainer {
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    .cloudContainer {
+      position: absolute;
+      top: 55px;
+      right: 0;
+      width: 100%;
+      animation: slide 5s linear infinite;
+      display: flex;
+      gap: 1000px;
+      z-index: -1;
+      @include responsive768 {
+        animation: slide 10s linear infinite;
+      }
+      @include responsive992 {
+        animation: slide 15s linear infinite;
+      }
+      @include responsive1200 {
+        top: 180px;
+      }
+      img {
+        width: 400px;
+        @include responsive992 {
+          width: 1000px;
+        }
+      }
+    }
+    .otherElement {
+      width: 80%;
+      margin: 60px auto;
+      @include responsive992 {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+      }
+      .textElements {
+        @include responsive992 {
+          width: 50%;
+        }
+        h1 {
+          color: $white_color;
+          font-family: "RobotoMedium";
+          font-size: 24px;
+          line-height: 141%;
+          margin-bottom: 16px;
+          @include responsive992 {
+            font-size: 34px;
+            margin-bottom: 30px;
+          }
+          @include responsive1200 {
+            font-size: 44px;
+            margin-bottom: 52px;
+          }
+        }
+        p {
+          color: #e0e0e0;
+          font-family: "Roboto";
+          font-size: 16px;
+          line-height: 120%;
+          margin-bottom: 40px;
+          @include responsive992 {
+            width: 80%;
+            font-size: 18px;
+            margin-bottom: 45px;
+          }
+          @include responsive1200 {
+            font-size: 20px;
+            margin-bottom: 57px;
+          }
+        }
+        .buttons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            color: $white_color;
+            font-family: "RobotoMedium";
+            font-size: 14px;
+            @include responsive992 {
+              font-size: 16px;
+              height: 50px;
+              padding: 10px;
+            }
+            @include responsive1200 {
+              font-size: 20px;
+            }
+          }
+          a:first-child {
+            padding: 12px 30px;
+            border: 1px solid $white_color;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: #e9e9e92a;
+            }
+          }
+          a:last-child {
+            padding: 8px 24px;
+            background: #022b9e;
+            @include responsive992 {
+              display: none;
+            }
+          }
+        }
+      }
+      .imageContainer {
+        display: none;
+        list-style: none;
+        @include responsive992 {
+          width: 50%;
+          display: flex;
+          align-items: center;
+          li:first-child {
+            width: 35%;
+            img {
+              width: 100%;
+            }
+          }
+          li:last-child {
+            width: 65%;
+            img {
+              width: 100%;
+            }
+          }
         }
       }
     }

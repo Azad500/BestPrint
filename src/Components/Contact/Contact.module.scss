@@ -14,13 +14,13 @@
   src: url(../../FontFamily/Roboto/Roboto-Medium.ttf);
 }
 
-.contactContainer {
+.contactElement {
+  padding: 24px 20px;
+  background-color: $white_color;
+  position: relative;
+  z-index: 20;
   width: 100%;
-  .contactElement {
-    background-color: $white_color;
-    position: relative;
-    z-index: 20;
-    padding: 24px 20px;
-    width: 100%;
+  @include responsive992 {
+    padding: 24px 0;
   }
 }

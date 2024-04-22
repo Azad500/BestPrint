@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Informations from "../../../Informations";
 import styles from "./Navbar.module.scss";
 export default function NavbarInSameParts({}) {
@@ -7,86 +8,238 @@ export default function NavbarInSameParts({}) {
   const services = location.pathname.includes("/services");
   const companies = location.pathname.includes("/companies");
   const contact = location.pathname.includes("/contact");
+  const [isNavbar, setIsNavbar] = useState(true);
+  const [searched, setSearched] = useState(true);
+
+  const handleSearch = () => {
+    setSearched(false);
+  };
+
+  useEffect(() => {
+    setIsNavbar(location.pathname !== "/");
+  }, [location.pathname]);
+
   return (
-    <header>
+    <header className={!isNavbar ? styles.header : null}>
       <div className={styles.loginPart}>
         <ul className={styles.contactInformations}>
           <li className={styles.phoneElement}>
             <figure>
-              <img src={Informations.BlackPhone} alt="Phone Image" />
+              {isNavbar ? (
+                <img src={Informations.BlackPhone} alt="Phone Image" />
+              ) : null}
+              {!isNavbar ? (
+                <img src={Informations.WhiteCall} alt="White Phone Image" />
+              ) : null}
             </figure>
-            <a href="tel:+994 (70)xxx-xx-xx">+994 (70)xxx-xx-xx</a>
+            <a
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+              href="tel:+994 (70)xxx-xx-xx"
+            >
+              +994 (70)xxx-xx-xx
+            </a>
           </li>
           <li className={styles.mailElement}>
             <figure>
-              <img src={Informations.BlackMail} alt="Mail Image" />
+              {isNavbar ? (
+                <img src={Informations.BlackMail} alt="Mail Image" />
+              ) : null}
+              {!isNavbar ? (
+                <img src={Informations.WhiteMail} alt="White Mail Image" />
+              ) : null}
             </figure>
-            <a target="_blank" href="mailto:bestprint@gmail.com">
+            <a
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+              target="_blank"
+              href="mailto:bestprint@gmail.com"
+            >
               bestprint@gmail.com
             </a>
           </li>
           <li className={styles.sosialAndLangElements}>
             <ul className={styles.sosialNetworkElement}>
               <li>
-                <a target="_blank" href="https://www.instagram.com/">
-                  <img src={Informations.BlackInstagram} alt="Instagram Logo" />
+                <a
+                  className={styles.whiteColor}
+                  target="_blank"
+                  href="https://www.instagram.com/"
+                >
+                  {isNavbar ? (
+                    <img
+                      src={Informations.BlackInstagram}
+                      alt="Instagram Logo"
+                    />
+                  ) : null}
+                  {!isNavbar ? (
+                    <img
+                      src={Informations.WhiteInstagram}
+                      alt="White Instagram Logo"
+                    />
+                  ) : null}
                 </a>
               </li>
               <li>
                 <a target="_blank" href="https://www.facebook.com/">
-                  <img src={Informations.BlackFacebook} alt="Facebook Logo" />
+                  {isNavbar ? (
+                    <img src={Informations.BlackFacebook} alt="Facebook Logo" />
+                  ) : null}
+                  {!isNavbar ? (
+                    <img
+                      src={Informations.WhiteFacebook}
+                      alt="White Facebook Logo"
+                    />
+                  ) : null}
                 </a>
               </li>
             </ul>
             <div className={styles.langElement}>
-              <p>AZE</p>
+              <p className={!isNavbar ? styles.whiteColor : styles.blackColor}>
+                AZE
+              </p>
               <div className={styles.arrowElement}>
-                <img src={Informations.BlackDownArrow} alt="Down Arrow" />
+                {isNavbar ? (
+                  <img src={Informations.BlackDownArrow} alt="Down Arrow" />
+                ) : null}
+                {!isNavbar ? (
+                  <img
+                    src={Informations.WhiteDownArrow}
+                    alt="White Lang Arrow"
+                  />
+                ) : null}
               </div>
             </div>
           </li>
         </ul>
         <div className={styles.userElement}>
-          <p>Daxil ol/Qeydiyyat</p>
+          <a className={!isNavbar ? styles.whiteColor : styles.blackColor}>
+            Daxil ol/Qeydiyyat
+          </a>
           <div className={styles.userImage}>
-            <img src={Informations.UserImage} alt="User Image" />
+            {isNavbar && <img src={Informations.UserImage} alt="User Image" />}
+            {!isNavbar && (
+              <img src={Informations.WhiteAccount} alt="White Account Image" />
+            )}
           </div>
         </div>
       </div>
-      <nav>
+      <nav className={!isNavbar ? styles.navbar : null}>
         <div className={styles.logoElement}>
-          <img src={Informations.Logo} alt="Logo Image" />
+          {isNavbar && <img src={Informations.Logo} alt="Logo Image" />}
+          {!isNavbar && (
+            <img src={Informations.WhiteLogo} alt="White Logo Image" />
+          )}
         </div>
         <ul className={styles.searchAndMenuElements}>
           <li>
-            <img src={Informations.Search} alt="Search Image" />
+            {searched && (
+              <img
+                className={
+                  isNavbar ? styles.searchImage : styles.searchImageHidden
+                }
+                onClick={handleSearch}
+                src={Informations.Search}
+                alt="Search Image"
+              />
+            )}
+            {searched && (
+              <img
+                className={
+                  !isNavbar ? styles.searchImage : styles.searchImageHidden
+                }
+                onClick={handleSearch}
+                src={Informations.WhiteSearch}
+                alt="White Search Image"
+              />
+            )}
+            {!searched && (
+              <div className={styles.searchInput}>
+                <input type="text" name="searchPart" placeholder="Axtarış" />
+                <div className={styles.searchImageInInput}>
+                  <img src={Informations.Search} alt="Search Image In Input" />
+                </div>
+              </div>
+            )}
           </li>
           <li>
-            <img src={Informations.HamburgerBar} alt="HamburgerBar Image" />
+            {isNavbar && (
+              <img src={Informations.HamburgerBar} alt="HamburgerBar Image" />
+            )}
+            {!isNavbar && (
+              <img
+                src={Informations.WhiteHamburgerBar}
+                alt="White HamburgerBar Image"
+              />
+            )}
           </li>
         </ul>
         <ul className={styles.menuList}>
           <li>
-            <a href="#">Ana Səhifə</a>
+            <Link
+              to={"/"}
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+            >
+              Ana Səhifə
+            </Link>
           </li>
           <li>
-            <Link to={"/portfolio"}>Portfolio</Link>
+            <Link
+              to={"/portfolio"}
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+            >
+              Portfolio
+            </Link>
           </li>
           <li>
-            <Link to={"/services"}>Xidmətlərimiz</Link>
+            <Link
+              to={"/services"}
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+            >
+              Xidmətlərimiz
+            </Link>
           </li>
           <li>
-            <Link to={"/companies"}>Kompaniyalar</Link>
+            <Link
+              to={"/companies"}
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+            >
+              Kompaniyalar
+            </Link>
           </li>
           <li>
-            <Link to={"/contact"}>Əlaqə</Link>
+            <Link
+              to={"/contact"}
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+            >
+              Əlaqə
+            </Link>
           </li>
         </ul>
         <div className={styles.searchAndOrderElements}>
           <div className={styles.searchInput}>
-            <input type="text" name="searchPart" placeholder="Axtarış" />
+            <input
+              className={!isNavbar ? styles.whiteColor : styles.blackColor}
+              type="text"
+              name="searchPart"
+              placeholder="Axtarış"
+            />
             <div className={styles.searchImageInInput}>
-              <img src={Informations.Search} alt="Search Image In Input" />
+              {isNavbar && (
+                <img src={Informations.Search} alt="Search Image In Input" />
+              )}
+              {!isNavbar && (
+                <img
+                  className={styles.whiteSearch}
+                  src={Informations.WhiteSearch}
+                  alt="White Search Image In Input"
+                />
+              )}
+              {!isNavbar && (
+                <img
+                  className={styles.blackSearch}
+                  src={Informations.Search}
+                  alt="Search Image In Input"
+                />
+              )}
             </div>
           </div>
           <a className={styles.orderButton} href="#">
@@ -94,28 +247,61 @@ export default function NavbarInSameParts({}) {
           </a>
         </div>
       </nav>
-      <div className={styles.imageElement}>
-        <div className={styles.skyElement}>
-          <img src={Informations.SkyImage} alt="Sky Image" />
+      {isNavbar && (
+        <div className={styles.imageElement}>
+          <div className={styles.skyElement}>
+            <img src={Informations.SkyImage} alt="Sky Image" />
+          </div>
+          <div className={styles.cloudElement}>
+            <img src={Informations.CloudImage} alt="Cloud Image" />
+            <img src={Informations.CloudImage} alt="Cloud Image" />
+          </div>
+          <div className={styles.textElement}>
+            <p>Ana Səhifə </p>
+            {portfolio && !services && !companies && !contact && (
+              <p> / Portfolio</p>
+            )}
+            {services && !portfolio && !companies && !contact && (
+              <p> / Xidmətlərimiz</p>
+            )}
+            {companies && !portfolio && !services && !contact && (
+              <p> / Kompaniyalar</p>
+            )}
+            {contact && !portfolio && !services && !companies && (
+              <p> / Əlaqə</p>
+            )}
+          </div>
         </div>
-        <div className={styles.cloudElement}>
-          <img src={Informations.CloudImage} alt="Cloud Image" />
-          <img src={Informations.CloudImage} alt="Cloud Image" />
+      )}
+      {!isNavbar && (
+        <div className={styles.otherContainer}>
+          <div className={styles.cloudContainer}>
+            <img src={Informations.CloudImage} alt="Cloud Image" />
+            <img src={Informations.CloudImage} alt="Cloud Image" />
+          </div>
+          <div className={styles.otherElement}>
+            <div className={styles.textElements}>
+              <h1>Müxtəlif Xidmətlər Üzrə Portfoliomuz İlə Tanış Olun</h1>
+              <p>
+                On the other hand, we denounce with righteous indignation and
+                dislike men who are so beguiled and demoralized by
+              </p>
+              <div className={styles.buttons}>
+                <a href="">Əlaqə</a>
+                <a href="">Sifariş et</a>
+              </div>
+            </div>
+            <ul className={styles.imageContainer}>
+              <li>
+                <img src={Informations.HeaderImage1} alt="Header Image 1" />
+              </li>
+              <li>
+                <img src={Informations.HeaderImage2} alt="Header Image 2" />
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className={styles.textElement}>
-          <p>Ana Səhifə </p>
-          {portfolio && !services && !companies && !contact && (
-            <p> / Portfolio</p>
-          )}
-          {services && !portfolio && !companies && !contact && (
-            <p> / Xidmətlərimiz</p>
-          )}
-          {companies && !portfolio && !services && !contact && (
-            <p> / Kompaniyalar</p>
-          )}
-          {contact && !portfolio && !services && !companies && <p> / Əlaqə</p>}
-        </div>
-      </div>
+      )}
     </header>
   );
 }

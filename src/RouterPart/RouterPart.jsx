@@ -1,6 +1,7 @@
 import styles from "./RouterPart.module.scss";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 import Companies from "../Components/Companies/Companies";
+import HomePage from "../Components/HomePage/HomePage";
 import Portfolio from "../Components/Portfolio/Portfolio";
 import Services from "../Components/Services/services";
 import Contact from "../Components/Contact/Contact";
@@ -11,13 +12,22 @@ import Pages from "../Components/Portfolio/PortfolioPages/Pages";
 import BusinessCard from "../Components/Services/ServicesPages/Card";
 import Prices from "../Components/Services/Prices/Prices";
 import Details from "../Components/Companies/CompaniesPages/Details";
+import { useEffect, useState } from "react";
 
 export default function RouterPart() {
+  const [hidden, setHidden] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    setHidden(location.pathname !== "/");
+  }, [location.pathname]);
+
   return (
     <section className={styles.container}>
       <NavbarInSameParts />
       <div className={styles.element}>
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio/pages" element={<Pages />} />
           <Route path="/services" element={<Services />} />
@@ -28,7 +38,7 @@ export default function RouterPart() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-      <MainInSameParts />
+      {hidden && <MainInSameParts />}
       <Footer />
     </section>
   );

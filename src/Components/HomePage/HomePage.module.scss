@@ -1,0 +1,376 @@
+@import "../../VariableElements/Responsive.scss";
+@import "../../VariableElements/Color.scss";
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../../FontFamily/Roboto/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: "RobotoBold";
+  src: url(../../FontFamily/Roboto/Roboto-Bold.ttf);
+}
+@font-face {
+  font-family: "RobotoMedium";
+  src: url(../../FontFamily/Roboto/Roboto-Medium.ttf);
+}
+
+.homePagePart {
+  padding: 24px 20px;
+  @include responsive768 {
+    width: 90%;
+    margin: 0 auto;
+    padding: 64px 0;
+  }
+  //   ------------servicesPart----------------
+  .servicesTexts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    .headerText {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        color: #022b9e;
+        font-family: "RobotoBold";
+        font-size: 16px;
+        font-style: normal;
+        line-height: 140%;
+        letter-spacing: 0.2px;
+        @include responsive992 {
+          font-size: 24px;
+        }
+      }
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        width: 100px;
+        height: 40px;
+        padding: 11px 8px;
+        border-radius: 3px;
+        border: 0.7px solid #bdbdbd;
+        color: $black_color;
+        font-family: "Roboto";
+        font-size: 11px;
+        line-height: 140%;
+        letter-spacing: 0.136px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        @include responsive768 {
+          font-size: 14px;
+          width: 138px;
+          height: 50px;
+        }
+        @include responsive992 {
+          font-size: 16px;
+          width: 148px;
+          height: 54px;
+        }
+      }
+    }
+    p {
+      color: $black_color;
+      font-family: "RobotoMedium";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      max-width: 380px;
+      @include responsive992 {
+        font-size: 36px;
+        max-width: 750px;
+      }
+    }
+  }
+  .servicesCards {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin: 30px auto 64px auto;
+    @include responsive992 {
+      gap: 55px;
+    }
+    @include responsive1200 {
+      width: 1050px;
+      gap: 60px;
+    }
+    @include responsive1440 {
+      justify-content: space-between;
+      width: 100%;
+    }
+    @include responsive1800 {
+      width: 1600px;
+    }
+    li {
+      position: relative;
+      div {
+        width: 280px;
+        height: 261px;
+        border-radius: 15px;
+        cursor: pointer;
+        overflow: hidden;
+        @include responsive1200 {
+          width: 300px;
+          height: 300px;
+          margin-bottom: 10px;
+        }
+        @include responsive1440 {
+          width: 380px;
+          height: 380px;
+        }
+        img {
+          width: 100%;
+          border-radius: 15px;
+          transition: transform 0.3s ease;
+          @include responsive1200 {
+            height: 300px;
+          }
+          @include responsive1440 {
+            height: 380px;
+          }
+        }
+        &:hover img {
+          transform: scale(1.2);
+        }
+      }
+      a {
+        position: absolute;
+        width: 154px;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px;
+        background-color: #022b9e;
+        color: $white_color;
+        text-decoration: none;
+        text-align: center;
+        padding: 10px 0;
+        font-family: "RobotoMedium";
+        font-size: 16px;
+        line-height: 110%;
+        @include responsive992 {
+          bottom: -40px;
+          left: 0;
+          transform: translateX(0);
+          border-radius: 0;
+          padding: 0;
+          background-color: unset;
+          text-align: start;
+          color: $black_color;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+//   ------------portfolioPart----------------
+.homePageContainer {
+  width: 100%;
+  background: #e0eeff;
+  position: relative;
+  .triangleImage1 {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    img {
+      width: 30px;
+      @include responsive992 {
+        top: 10px;
+        width: 70px;
+      }
+    }
+  }
+  .triangleImage2 {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    img {
+      width: 70px;
+      transform: scale(-1);
+      transform: scaleX(-1);
+      @include responsive992 {
+        width: 120px;
+      }
+    }
+  }
+  .otherOurWorks {
+    width: 100%;
+    padding: 24px 20px;
+    @include responsive768 {
+      width: 90%;
+      margin: 0 auto;
+      padding: 51px 0;
+    }
+    .onlyText {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      p {
+        color: #022b9e;
+        font-family: "RobotoBold";
+        font-size: 16px;
+        font-style: normal;
+        line-height: 140%;
+        letter-spacing: 0.2px;
+        @include responsive992 {
+          font-size: 24px;
+        }
+      }
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        width: 100px;
+        height: 40px;
+        padding: 11px 8px;
+        border-radius: 3px;
+        border: 0.7px solid #9b9b9b;
+        color: $black_color;
+        font-family: "Roboto";
+        font-size: 11px;
+        line-height: 140%;
+        letter-spacing: 0.136px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        @include responsive768 {
+          font-size: 14px;
+          width: 138px;
+          height: 50px;
+        }
+        @include responsive992 {
+          font-size: 16px;
+          width: 148px;
+          height: 54px;
+        }
+      }
+    }
+    .text {
+      color: $black_color;
+      font-family: "RobotoMedium";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      max-width: 380px;
+      margin-bottom: 20px;
+      @include responsive992 {
+        font-size: 36px;
+        max-width: 750px;
+        margin-bottom: 37px;
+      }
+    }
+  }
+  // --------autoSLider----------
+  .upSideContainer::-webkit-scrollbar {
+    display: none;
+  }
+  .downSliderContainer::-webkit-scrollbar {
+    display: none;
+  }
+  .container {
+    .upSideContainer {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      box-sizing: border-box;
+      overflow: scroll;
+      &.paused {
+        .upSliderContainer {
+          animation-play-state: paused;
+        }
+        .downSliderContainer {
+          animation-play-state: paused;
+        }
+      }
+      .upSliderContainer {
+        display: flex;
+        justify-content: space-around;
+        animation: upSliderShow 70s infinite linear;
+        position: relative;
+        margin-bottom: 15px;
+        @keyframes upSliderShow {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        @include responsive992 {
+          margin-top: 0;
+        }
+        .upSlider {
+          width: 250px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          transition: transform 0.5s ease;
+          p {
+            color: #424242;
+            font-family: "Lexend";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+      .downSliderContainer {
+        display: flex;
+        justify-content: space-around;
+        animation: downSliderShow 70s infinite linear;
+        position: relative;
+        margin-bottom: 50px;
+        @keyframes downSliderShow {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        .upSlider {
+          width: 250px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          transition: transform 0.5s ease;
+          p {
+            color: #424242;
+            font-family: "Lexend";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
