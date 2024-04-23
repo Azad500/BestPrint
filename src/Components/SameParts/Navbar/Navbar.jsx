@@ -2,7 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Informations from "../../../Informations";
 import styles from "./Navbar.module.scss";
-export default function NavbarInSameParts({}) {
+import AboutUsers from "../../AboutUsers/AboutUsers";
+export default function NavbarInSameParts({
+  handleLoginWindow,
+  enteredUsers,
+  aboutUsers,
+  handleAboutUsers,
+}) {
   const location = useLocation();
   const portfolio = location.pathname.includes("/portfolio");
   const services = location.pathname.includes("/services");
@@ -110,17 +116,42 @@ export default function NavbarInSameParts({}) {
             </div>
           </li>
         </ul>
-        <div className={styles.userElement}>
-          <a className={!isNavbar ? styles.whiteColor : styles.blackColor}>
-            Daxil ol/Qeydiyyat
-          </a>
-          <div className={styles.userImage}>
+        {/* ----------users-------- */}
+        <ul className={styles.userElement}>
+          <li>
+            {enteredUsers && (
+              <a
+                onClick={handleLoginWindow}
+                className={!isNavbar ? styles.whiteColor : styles.blackColor}
+              >
+                Daxil ol/Qeydiyyat
+              </a>
+            )}
+            {!enteredUsers && (
+              <a
+                onClick={handleAboutUsers}
+                className={!isNavbar ? styles.whiteColor : styles.blackColor}
+              >
+                Azad Mirzazada
+              </a>
+            )}
+            <div className={styles.arrow}>
+              {!isNavbar && (
+                <img src={Informations.WhiteDownArrow} alt="White Down Arrow" />
+              )}
+              {isNavbar && (
+                <img src={Informations.BlackDownArrow} alt="Black Down Arrow" />
+              )}
+            </div>
+          </li>
+          <li className={styles.userImage}>
             {isNavbar && <img src={Informations.UserImage} alt="User Image" />}
             {!isNavbar && (
               <img src={Informations.WhiteAccount} alt="White Account Image" />
             )}
-          </div>
-        </div>
+          </li>
+          {aboutUsers && <AboutUsers />}
+        </ul>
       </div>
       <nav className={!isNavbar ? styles.navbar : null}>
         <div className={styles.logoElement}>

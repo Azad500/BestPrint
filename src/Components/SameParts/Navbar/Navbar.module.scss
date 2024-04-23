@@ -143,48 +143,64 @@ header {
       display: flex;
       align-items: center;
       gap: 16px;
-      a {
+      list-style: none;
+      position: relative;
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         position: relative;
-        font-family: "Roboto";
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 140%;
-        letter-spacing: 0.2px;
-        text-decoration: none;
-        color: $black_color;
         cursor: pointer;
-        &:after {
-          content: "";
-          position: absolute;
-          height: 1px;
-          width: 0; //js kodunda bunu 100% edende secilmis kimi olacaq
-          left: 0;
-          bottom: -10px;
-          transition: 0.3s;
+        .arrow {
+          img {
+            width: 10px;
+            height: 10px;
+          }
         }
-        &:hover::after {
-          width: 100%;
+        a {
+          font-family: "Roboto";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+          letter-spacing: 0.2px;
+          text-decoration: none;
+          color: $black_color;
+          cursor: pointer;
+          &:after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 0; //js kodunda bunu 100% edende secilmis kimi olacaq
+            left: 0;
+            bottom: -10px;
+            transition: 0.3s;
+          }
+          &:hover::after {
+            width: 100%;
+          }
+        }
+        .whiteColor {
+          color: $white_color;
+          &:after {
+            background-color: $white_color;
+          }
+        }
+        .blackColor {
+          color: $black_color;
+          &:after {
+            background-color: $black_color;
+          }
         }
       }
-      .whiteColor {
-        color: $white_color;
-        &:after {
-          background-color: $white_color;
-        }
-      }
-      .blackColor {
-        color: $black_color;
-        &:after {
-          background-color: $black_color;
-        }
-      }
-      .userImage {
-        height: 24px;
-        cursor: pointer;
-        img {
-          width: 24px;
+      li {
+        .userImage {
           height: 24px;
+          cursor: pointer;
+          img {
+            width: 24px;
+            height: 24px;
+          }
         }
       }
     }

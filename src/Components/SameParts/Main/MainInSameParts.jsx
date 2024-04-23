@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Informations from "../../../Informations";
 import styles from "./MainInSameParts.module.scss";
 export default function MainInSameParts() {
@@ -16,9 +17,9 @@ export default function MainInSameParts() {
           Müntəzəm olaraq yeni insanlarla tanış olan hər kəs daha effektiv
           təqdimat və tanışlıq üçün, vizit kartlar
         </article>
-        <a className={styles.orderButton} href="#">
+        <Link className={styles.orderButton} to={"/companies/details"}>
           Ətraflı
-        </a>
+        </Link>
       </div>
       <div className={styles.imageElement}>
         <div className={styles.triangleImage}>

@@ -35,6 +35,7 @@ import ProductImages from "./Images/productsImage.png";
 import ProductImages2 from "./Images/productsImage2.png";
 import HeaderImage1 from "./Images/headerImage1.png";
 import HeaderImage2 from "./Images/headerImage2.png";
+import XIcon from "./Images/close.png";
 // -------------Portfolio-Card----------------
 import PortfolioCard1 from "./Images/portfolioCard1.png";
 import PortfolioCard2 from "./Images/portfolioCard2.png";
@@ -58,6 +59,8 @@ import FacebookContact from "./Images/facebookContact.svg";
 import InstagramContact from "./Images/instagramContact.svg";
 import TiktokContact from "./Images/tiktokContact.svg";
 import LinkedinContact from "./Images/linkedinContact.svg";
+// ---------------AboutUs------------------
+import AboutUsImage from "./Images/aboutUsImage.png";
 
 const Informations = {
   Logo: Logo,
@@ -108,6 +111,7 @@ const Informations = {
   OtherImages3: OtherImages3,
   RightArrow: RightArrow,
   LeftArrow: LeftArrow,
+  XIcon: XIcon,
   AznImage: AznImage,
   CompaniesImage1: CompaniesImage1,
   CompaniesImage2: CompaniesImage2,
@@ -116,6 +120,7 @@ const Informations = {
   InstagramContact: InstagramContact,
   TiktokContact: TiktokContact,
   LinkedinContact: LinkedinContact,
+  AboutUsImage: AboutUsImage,
 };
 
 export default Informations;
