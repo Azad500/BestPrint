@@ -14,6 +14,9 @@ import BusinessCard from "../Components/Services/ServicesPages/Card";
 import Prices from "../Components/Services/Prices/Prices";
 import Details from "../Components/Companies/CompaniesPages/Details";
 import Login from "../Components/Login/Login";
+import MyAccount from "../Components/AboutUsers/MyAccount";
+import Orders from "../Components/AboutUsers/Orders";
+import MyOrder from "../Components/AboutUsers/MyOrder";
 
 export default function RouterPart() {
   const [hidden, setHidden] = useState(true);
@@ -92,6 +95,9 @@ export default function RouterPart() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/companies/details" element={<Details />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/account" element={<MyAccount />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/order" element={<MyOrder />} />
         </Routes>
       </div>
       {hidden && <MainInSameParts />}

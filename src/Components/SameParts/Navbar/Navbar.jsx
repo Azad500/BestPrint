@@ -14,6 +14,7 @@ export default function NavbarInSameParts({
   const services = location.pathname.includes("/services");
   const companies = location.pathname.includes("/companies");
   const contact = location.pathname.includes("/contact");
+  const accountant = location.pathname.includes("/account");
   const [isNavbar, setIsNavbar] = useState(true);
   const [searched, setSearched] = useState(true);
 
@@ -150,7 +151,7 @@ export default function NavbarInSameParts({
               <img src={Informations.WhiteAccount} alt="White Account Image" />
             )}
           </li>
-          {aboutUsers && <AboutUsers />}
+          {aboutUsers && <AboutUsers handleAboutUsers={handleAboutUsers} />}
         </ul>
       </div>
       <nav className={!isNavbar ? styles.navbar : null}>
@@ -289,18 +290,31 @@ export default function NavbarInSameParts({
           </div>
           <div className={styles.textElement}>
             <p>Ana Səhifə </p>
-            {portfolio && !services && !companies && !contact && (
-              <p> / Portfolio</p>
-            )}
-            {services && !portfolio && !companies && !contact && (
-              <p> / Xidmətlərimiz</p>
-            )}
-            {companies && !portfolio && !services && !contact && (
-              <p> / Kompaniyalar</p>
-            )}
-            {contact && !portfolio && !services && !companies && (
-              <p> / Əlaqə</p>
-            )}
+            {portfolio &&
+              !services &&
+              !companies &&
+              !contact &&
+              !accountant && <p> / Portfolio</p>}
+            {services &&
+              !portfolio &&
+              !companies &&
+              !contact &&
+              !accountant && <p> / Xidmətlərimiz</p>}
+            {companies &&
+              !portfolio &&
+              !services &&
+              !contact &&
+              !accountant && <p> / Kompaniyalar</p>}
+            {contact &&
+              !portfolio &&
+              !services &&
+              !companies &&
+              !accountant && <p> / Əlaqə</p>}
+            {accountant &&
+              !portfolio &&
+              !services &&
+              !companies &&
+              !contact && <p> / Hesabım</p>}
           </div>
         </div>
       )}
