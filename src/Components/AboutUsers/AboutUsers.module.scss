@@ -15,10 +15,12 @@
 }
 
 .usersContainer {
-  position: absolute;
-  top: 30px;
-  left: -5px;
-  z-index: 100;
+  @include responsive992 {
+    position: absolute;
+    top: 30px;
+    left: -5px;
+    z-index: 100;
+  }
   .usersElement {
     list-style: none;
     border-radius: 8px;

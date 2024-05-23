@@ -1,8 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Informations from "../../../Informations";
 import styles from "./Navbar.module.scss";
 import AboutUsers from "../../AboutUsers/AboutUsers";
+import DropDownMenu from "./DropDownMenu";
 export default function NavbarInSameParts({
   handleLoginWindow,
   enteredUsers,
@@ -17,9 +18,13 @@ export default function NavbarInSameParts({
   const accountant = location.pathname.includes("/account");
   const [isNavbar, setIsNavbar] = useState(true);
   const [searched, setSearched] = useState(true);
+  const [active, setActive] = useState(false);
 
   const handleSearch = () => {
     setSearched(false);
+  };
+  const handleNavbar = () => {
+    setActive(true);
   };
 
   useEffect(() => {
@@ -151,7 +156,12 @@ export default function NavbarInSameParts({
               <img src={Informations.WhiteAccount} alt="White Account Image" />
             )}
           </li>
-          {aboutUsers && <AboutUsers handleAboutUsers={handleAboutUsers} />}
+          {aboutUsers && (
+            <AboutUsers
+              handleAboutUsers={handleAboutUsers}
+              
+            />
+          )}
         </ul>
       </div>
       <nav className={!isNavbar ? styles.navbar : null}>
@@ -194,12 +204,17 @@ export default function NavbarInSameParts({
           </li>
           <li>
             {isNavbar && (
-              <img src={Informations.HamburgerBar} alt="HamburgerBar Image" />
+              <img
+                src={Informations.HamburgerBar}
+                alt="HamburgerBar Image"
+                onClick={handleNavbar}
+              />
             )}
             {!isNavbar && (
               <img
                 src={Informations.WhiteHamburgerBar}
                 alt="White HamburgerBar Image"
+                onClick={handleNavbar}
               />
             )}
           </li>
@@ -333,7 +348,9 @@ export default function NavbarInSameParts({
               </p>
               <div className={styles.buttons}>
                 <a href="">Əlaqə</a>
-                <a href="">Sifariş et</a>
+                <a href="" onClick={() => useNavigate("/")}>
+                  Sifariş et
+                </a>
               </div>
             </div>
             <ul className={styles.imageContainer}>
@@ -347,6 +364,14 @@ export default function NavbarInSameParts({
           </div>
         </div>
       )}
+      <DropDownMenu
+        enteredUsers={enteredUsers}
+        active={active}
+        setActive={setActive}
+        handleLoginWindow={handleLoginWindow}
+        aboutUsers={aboutUsers}
+        handleAboutUsers={handleAboutUsers}
+      />
     </header>
   );
 }
