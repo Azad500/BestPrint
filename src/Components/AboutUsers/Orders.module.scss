@@ -27,7 +27,7 @@
     flex-direction: column;
     align-items: start;
     gap: 16px;
-    margin-bottom: 44px;
+    margin-bottom: 20px;
     h1 {
       color: #022b9e;
       font-family: "RobotoBold";
@@ -57,6 +57,44 @@
       text-align: center;
       font-family: "RobotoMedium";
       font-size: 24px;
+    }
+  }
+  .ordersTable {
+    margin: 20px 0;
+    table {
+      display: flex;
+      justify-content: center;
+      line-height: 25px;
+      @include responsive992 {
+        flex-direction: column;
+      }
+      tr {
+        display: flex;
+        flex-direction: column;
+        @include responsive992 {
+          flex-direction: row;
+          justify-content: center;
+        }
+        th,
+        td {
+          display: flex;
+          flex-direction: column;
+          color: #59616b;
+          font-size: 16px;
+          font-weight: 600;
+          border-right: 1px solid #d9d9d9;
+          padding: 12px;
+          height: 60px;
+          @include responsive992 {
+            width: 20%;
+          }
+        }
+        td {
+          color: #6e7987;
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
     }
   }
 }

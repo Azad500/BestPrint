@@ -55,6 +55,7 @@ header {
         align-items: center;
         figure {
           height: 25px;
+          margin: 0;
           img {
             width: 24px;
             height: 24px;
@@ -123,6 +124,7 @@ header {
           }
           .whiteColor {
             color: $white_color;
+            margin: 0;
           }
           .blackColor {
             color: $black_color;
